@@ -57,19 +57,19 @@ public abstract class ShaderProgram {
 		return glGetUniformLocation(programID, uniformName);
 	}
 	
-	protected void setUniformFloat(String uniformName, float value)
+	protected void setUniformFloat(int uniformLoc, float value)
 	{
-		glUniform1f(getUniformLocation(uniformName), value);
+		glUniform1f(uniformLoc, value);
 	}
 	
-	protected void setUniform3f(String uniformName, Vector3f vec)
+	protected void setUniform3f(int uniformLoc, Vector3f vec)
 	{
-		glUniform3f(getUniformLocation(uniformName), vec.x, vec.y, vec.z);
+		glUniform3f(uniformLoc, vec.x, vec.y, vec.z);
 	}
 	
-	protected void setUniformBool(String uniformName, boolean value)
+	protected void setUniformBool(int uniformLoc, boolean value)
 	{
-		glUniform1f(getUniformLocation(uniformName), value?1:0);
+		glUniform1f(uniformLoc, value?1:0);
 	}
 	
 	protected void setUniformMatrix(int uniformLoc, Matrix4f matrix)

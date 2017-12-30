@@ -3,6 +3,7 @@ package shader;
 import org.lwjgl.util.vector.*;
 
 import entities.Camera;
+import entities.Light;
 import toolbox.Maths;
 
 public class StaticShader extends ShaderProgram {
@@ -12,6 +13,8 @@ public class StaticShader extends ShaderProgram {
 	private int trafoMatLoc;
 	private int projMatLoc;
 	private int viewMatLoc;
+	private int lightMatLoc;
+	private int lightColourLoc;
 	
 	public StaticShader()
 	{
@@ -23,6 +26,13 @@ public class StaticShader extends ShaderProgram {
 	{
 		super.bindAttribute(0, "position");
 		super.bindAttribute(1, "textureCoords");
+		super.bindAttribute(2, "normal");
+	}
+	
+	public void loadLight(Light light)
+	{
+		super.setUniform3f(lightMatLoc, light.getPosition());
+		super.setUniform3f(lightColourLoc, light.getColour());
 	}
 	
 	public void loadTrafoMatrix(Matrix4f matrix)
@@ -46,6 +56,7 @@ public class StaticShader extends ShaderProgram {
 		trafoMatLoc = getUniformLocation("transformationMatrix");
 		projMatLoc = getUniformLocation("projectionMatrix");
 		viewMatLoc = getUniformLocation("viewMatrix");
+		lightMatLoc = getUniformLocation("lightPosition");
+		lightColourLoc = getUniformLocation("lightColour");
 	}
-	
 }

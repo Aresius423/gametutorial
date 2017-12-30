@@ -55,15 +55,13 @@ public class Loader {
 		for(Integer i : indexList)
 			indices[numOfVx++] = i;
 		
-		return loadToVAO(positions, textureCoords, indices);
-	}
-	
-	public RawModel loadToVAO(float[] positions, float[] textureCoords, int[] indices) {
 		int vaoID = createVAO();
 		bindIndicesBuffer(indices);
 		storeDataInAttributeList(0, 3, positions);
 		storeDataInAttributeList(1, 2, textureCoords);
+		storeDataInAttributeList(2, 3, normalCoords);
 		unbindVAO();
+		
 		return new RawModel(vaoID, indices.length);
 	}
 	
