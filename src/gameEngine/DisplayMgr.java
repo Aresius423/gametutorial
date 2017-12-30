@@ -9,11 +9,17 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.PixelFormat;
 
 public class DisplayMgr {	
+	public static int width;
+	public static int height;
+	
 	public static void createDisplay(String title) {
 		ContextAttribs attributes = new ContextAttribs(3,2).withForwardCompatible(true).withProfileCore(true);
 		
 		try {
 			java.awt.DisplayMode ddm = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode();
+			
+			width = ddm.getWidth();
+			height = ddm.getHeight();
 			
 			Display.setDisplayMode(new DisplayMode(ddm.getWidth()/2,ddm.getHeight()/2));
 			Display.setTitle(title);
