@@ -10,6 +10,11 @@ public class VertexData {
 	
 	private Vector3f norm;
 	
+	public VertexData()
+	{
+		super();
+	}
+	
 	VertexData(float x, float y, float z)
 	{
 		super();

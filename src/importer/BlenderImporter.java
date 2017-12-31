@@ -76,6 +76,8 @@ public abstract class BlenderImporter {
 			
 			RawModel model = loader.loadToVAO(vertexList, indexList);
 			ModelTexture texture = new ModelTexture(loader.loadTexture(modelName+"_texture"));
+			texture.setReflectivity(0.3f);
+			texture.setShine_dampening(10f);
 			texturedModel = new TexturedModel(model, texture);			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
